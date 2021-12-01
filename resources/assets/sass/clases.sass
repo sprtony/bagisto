@@ -1,0 +1,147 @@
+//correccion de columnas de bulma
+
+.columns
+    margin-left: unset
+    margin-right: unset
+
+html
+    scroll-behavior: smooth
+    overflow-y: unset
+
+.has-text-weight-
+    &extrabold
+        font-weight: $wExtraBold
+
+@mixin generateResponsive($name,$property,$value)
+    .#{$name}
+        &-fullhd
+            @media (min-width: $fullhd)
+                #{$property}: #{$value}px !important
+        &-widescreen
+            @media (min-width: $widescreen)
+                #{$property}: #{$value}px !important
+        &-desktop
+            @media (min-width: $desktop)
+                #{$property}: #{$value}px !important
+        &-touch
+            @media (max-width: $desktop - 1px)
+                #{$property}: #{$value}px !important
+        &-tablet
+            @media (min-width: $tablet)
+                #{$property}: #{$value}px !important
+        &-mobile
+            @media (max-width: $tablet - 1px)
+                #{$property}: #{$value}px !important
+
+@for $i from 0 through 20
+    .h#{5*$i}
+        height: #{5*$i}px
+    .pl#{5*$i}
+        padding-left: #{5*$i}px
+    .pr#{5*$i}
+        padding-right: #{5*$i}px
+    .pt#{5*$i}
+        padding-top: #{5*$i}px
+    .pb#{5*$i}
+        padding-bottom: #{5*$i}px
+    .p#{5*$i}
+        padding: #{5*$i}px
+    .py#{5*$i}
+        padding-top: #{5*$i}px
+        padding-bottom: #{5*$i}px
+    .px#{5*$i}
+        padding-left: #{5*$i}px
+        padding-right: #{5*$i}px
+    .mr#{5*$i}
+        margin-right: #{5*$i}px !important
+    .ml#{5*$i}
+        margin-left: #{5*$i}px
+    .mt#{5*$i}
+        margin-top: #{5*$i}px
+    .mb#{5*$i}
+        margin-bottom: #{5*$i}px
+    .m#{5*$i}
+        margin: #{5*$i}px
+    .mx#{5*$i}
+        margin-left: #{5*$i}px
+        margin-right: #{5*$i}px
+    .my#{5*$i}
+        margin-top: #{5*$i}px
+        margin-bottom: #{5*$i}px
+    .z#{$i}
+        z-index: $i
+    .b#{$i}
+        bottom: $i
+    .r#{$i}
+        right: $i
+@for $i from 1 through 100
+    .z#{$i}
+        z-index: $i
+
+@for $i from 5 through 50
+    .s#{2*$i}
+        font-size: #{2*$i}px
+    @include generateResponsive('s#{2*$i}','font-size','#{2*$i}')
+
+    .lh#{2*$i}
+        line-height: #{2*$i}px
+    @include generateResponsive('lh#{2*$i}','line-height','#{2*$i}')
+
+
+.w100p
+    width: 100%
+.h100p
+    height: 100%
+.cF
+    color: #FFF !important
+    &:hover
+        color: #FFF !important
+.bgF
+    background-color: #FFF
+.c0
+    color: #000 !important
+    &:hover
+        color: #000 !important
+.bg0
+    background-color: #000
+
+.is-sticky
+    top: 0
+    position: sticky
+.is-absolute
+    position: absolute
+.is-fixed
+    position: fixed
+
+address
+    font-style: normal
+    display: inline-block
+
+.rounded
+    padding: 5px 40px
+    border-radius: 40px
+
+.parallax
+    background-size: cover
+    background-attachment: fixed
+    background-position-x: center
+    background-position-y: 125px
+
+.cp
+    cursor: pointer
+
+.separador
+    height: 2px
+    width: 300px
+    background-color: $naranja
+
+.main-container-wrapper
+    .content-container
+        display: unset
+        margin-bottom: unset
+.is-tachado
+    text-decoration: line-through
+.line-separator
+    width: 100%
+    background-color: $c7A
+    height: 1px 

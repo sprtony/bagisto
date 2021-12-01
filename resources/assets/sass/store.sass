@@ -1,0 +1,160 @@
+.ribbon-nuevo
+    position: absolute
+    top: -5px
+    z-index: 1
+    overflow: hidden
+    width: 100px
+    height: 100px
+    text-align: right
+    right: -5px
+
+    span
+        font-size: 10px
+        font-weight: bold
+        color: #FFF
+        text-transform: uppercase
+        text-align: center
+        line-height: 20px
+        width: 135px
+        display: block
+        transform: rotate(45deg)
+        -webkit-transform: rotate(45deg)
+        right: -23px
+        background: #79A70A
+        background: linear-gradient(#79A70A 0%, #79A70A 100%)
+        box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1)
+        position: absolute
+        top: 35px
+        &::before
+            content: ""
+            position: absolute
+            left: 0px
+            top: 100%
+            z-index: -1
+            border-left: 3px solid #79A70A
+            border-right: 3px solid transparent
+            border-bottom: 3px solid transparent
+            border-top: 3px solid #79A70A
+        &::after
+            content: ""
+            position: absolute
+            right: 0px
+            top: 100%
+            z-index: -1
+            border-left: 3px solid transparent
+            border-right: 3px solid #79A70A
+            border-bottom: 3px solid transparent
+            border-top: 3px solid #79A70A
+
+.ribbon-oferta
+    position: absolute
+    top: -5px
+    z-index: 1
+    overflow: hidden
+    width: 75px
+    height: 75px
+    text-align: right
+    right: -5px
+
+    span
+        font-size: 10px
+        font-weight: bold
+        color: #FFF
+        text-transform: uppercase
+        text-align: center
+        line-height: 20px
+        width: 100px
+        display: block
+        transform: rotate(45deg)
+        -webkit-transform: rotate(45deg)
+        right: -21px
+        background: $crd
+        background: linear-gradient($crd 0%, $crd 100%)
+        box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1)
+        position: absolute
+        top: 19px
+        &::before
+            content: ""
+            position: absolute
+            left: 0px
+            top: 100%
+            z-index: -1
+            border-left: 3px solid $crd
+            border-right: 3px solid transparent
+            border-bottom: 3px solid transparent
+            border-top: 3px solid $crd
+        &::after
+            content: ""
+            position: absolute
+            right: 0px
+            top: 100%
+            z-index: -1
+            border-left: 3px solid transparent
+            border-right: 3px solid $crd
+            border-bottom: 3px solid transparent
+            border-top: 3px solid $crd
+
+
+.categories-nav
+    background-color: rgba(0,0,0,0.4)
+    nav
+        display: flex
+        justify-content: space-around
+        padding: 10px
+        padding-top: 20px
+        a
+            &:hover
+                font-weight: 800
+.breadcrumb
+    a
+        font-size: 14px
+        color: #636363 !important
+        &:hover
+            color: #636363
+.accordions
+    a
+        text-decoration: none !important
+    .accordion
+        background-color: unset
+        border: 1px solid #838383
+        &:not(:last-child)
+            margin-bottom: 10px
+        .accordion-header
+            background-color: unset
+            color: #838383
+            font-size: 14px
+            padding: 10px 20px
+            & + .accordion-body
+                color: unset
+                .accordion-content
+                    padding: unset
+                    padding-left: 20px
+                    padding-right: 20px
+        .accordion-body
+            color: #838383
+            font-size: 14px
+        .icono
+            opacity: 0
+            &:hover
+                color: $naranja
+        &.is-active
+            .accordion-header
+                padding-bottom: 0px
+            .icono
+                opacity: 1
+.main-container-wrapper
+    .product-card
+        padding: unset
+.precio
+    font-size: 16px
+    color: #000
+    font-weight: $wMedium
+.precio-tachado
+    color: #ff0000
+    text-decoration: line-through
+.quantity
+    label
+        margin-bottom: unset
+.add-to-wishlist
+    margin-top: 15px
+    position: absolute
