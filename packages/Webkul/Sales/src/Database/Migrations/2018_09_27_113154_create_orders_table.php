@@ -79,6 +79,9 @@ class CreateOrdersTable extends Migration
             $table->integer('channel_id')->unsigned()->nullable();
             $table->string('channel_type')->nullable();
             $table->foreign('channel_id')->references('id')->on('channels')->onDelete('set null');
+
+
+            $table->string('external_payment_id')->nullable();
             $table->timestamps();
         });
     }
