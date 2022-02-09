@@ -25,14 +25,20 @@ return [
         ],
     ],
 
-    'admin-default' => 'default',
+    'admin-default' => 'adminLTE',
 
     'admin-themes' => [
         'default' => [
             'views_path' => 'resources/admin-themes/default/views',
             'assets_path' => 'public/admin-themes/default/assets',
             'name' => 'Default'
+        ],
+
+        'adminLTE' => [
+            'views_path' => 'resources/admin-themes/adminLTE/views',
+            'assets_path' => 'public/admin-themes/adminLTE/assets',
+            'name' => 'adminLTE',
+            'parent' => 'default'
         ]
     ]
 ];
-
