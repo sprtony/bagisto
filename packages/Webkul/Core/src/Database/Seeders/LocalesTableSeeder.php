@@ -16,20 +16,13 @@ class LocalesTableSeeder extends Seeder
         DB::table('locales')->insert([
             [
                 'id'   => 1,
-                'code' => 'en',
-                'name' => 'English',
+                'code' => 'es',
+                'name' => 'Español',
             ], [
                 'id'   => 2,
-                'code' => 'fr',
-                'name' => 'French',
-            ], [
-                'id'   => 3,
-                'code' => 'nl',
-                'name' => 'Dutch',
-            ], [
-                'id'   => 4,
-                'code' => 'tr',
-                'name' => 'Türkçe',
-            ]]);
+                'code' => 'en',
+                'name' => 'English',
+            ]
+        ]);
     }
 }

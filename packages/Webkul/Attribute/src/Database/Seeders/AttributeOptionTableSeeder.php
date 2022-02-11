@@ -113,3 +113,4 @@ class AttributeOptionTableSeeder extends Seeder
         ]);
     }
 }
+

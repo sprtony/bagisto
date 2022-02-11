@@ -16,9 +16,16 @@ class RolesTableSeeder extends Seeder
 
         DB::table('roles')->insert([
             'id'              => 1,
-            'name'            => 'Administrator',
-            'description'     => 'Administrator role',
+            'name'            => 'Quimaira',
+            'description'     => 'Administrador',
             'permission_type' => 'all',
+        ]);
+
+        DB::table('roles')->insert([
+            'id'              => 2,
+            'name'            => 'Administrador',
+            'description'     => 'Administrador',
+            'permission_type' => 'custom',
         ]);
     }
 }

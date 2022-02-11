@@ -14,16 +14,17 @@ class InventoryTableSeeder extends Seeder
         DB::table('inventory_sources')->insert([
             'id'             => 1,
             'code'           => 'default',
-            'name'           => 'Default',
-            'contact_name'   => 'Detroit Warehouse',
-            'contact_email'  => 'warehouse@example.com',
-            'contact_number' => 1234567899,
+            'name'           => 'Bodega Principal',
+            'contact_name'   => '',
+            'contact_email'  => '',
+            'contact_number' => 0,
             'status'         => 1,
-            'country'        => 'US',
-            'state'          => 'MI',
-            'street'         => '12th Street',
-            'city'           => 'Detroit',
-            'postcode'       => '48127',
+            'country'        => 'MX',
+            'state'          => '',
+            'street'         => '',
+            'city'           => '',
+            'postcode'       => '',
         ]);
     }
 }
+

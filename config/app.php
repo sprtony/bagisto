@@ -283,6 +283,9 @@ return [
         Webkul\DebugBar\Providers\DebugBarServiceProvider::class,
         Webkul\Marketing\Providers\MarketingServiceProvider::class,
         Ridhima\MediaManager\Providers\MediaManagerServiceProvider::class,
+
+
+        Quimaira\Theme\Providers\ThemeServiceProvider::class,
     ],
 
     /*
@@ -346,4 +349,3 @@ return [
         'ProductVideo' => Webkul\Product\Facades\ProductVideo::class
     ],
 ];
-

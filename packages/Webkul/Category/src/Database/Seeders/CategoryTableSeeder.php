@@ -33,15 +33,16 @@ class CategoryTableSeeder extends Seeder
         DB::table('category_translations')->insert([
             [
                 'id'               => '1',
-                'name'             => 'Root',
-                'slug'             => 'root',
-                'description'      => 'Root',
+                'name'             => 'Inicio',
+                'slug'             => 'inicio',
+                'description'      => 'Inicio',
                 'meta_title'       => '',
                 'meta_description' => '',
                 'meta_keywords'    => '',
                 'category_id'      => '1',
-                'locale'           => 'en',
+                'locale'           => 'es',
             ]
         ]);
     }
 }
+

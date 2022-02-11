@@ -14,13 +14,18 @@ class CurrencyTableSeeder extends Seeder
         DB::table('currencies')->delete();
 
         DB::table('currencies')->insert([
-            [ 
+            [
                 'id'     => 1,
+                'code'   => 'MXN',
+                'name'   => 'Peso Mexicano',
+                'symbol' => '$',
+            ], [
+                'id'     => 2,
                 'code'   => 'USD',
                 'name'   => 'US Dollar',
                 'symbol' => '$',
             ], [
-                'id'     => 2,
+                'id'     => 3,
                 'code'   => 'EUR',
                 'name'   => 'Euro',
                 'symbol' => '€',

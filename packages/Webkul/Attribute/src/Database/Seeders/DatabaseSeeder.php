@@ -16,6 +16,5 @@ class DatabaseSeeder extends Seeder
         $this->call(AttributeFamilyTableSeeder::class);
         $this->call(AttributeGroupTableSeeder::class);
         $this->call(AttributeTableSeeder::class);
-        $this->call(AttributeOptionTableSeeder::class);
     }
 }

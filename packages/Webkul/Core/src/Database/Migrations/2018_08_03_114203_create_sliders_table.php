@@ -18,7 +18,7 @@ class CreateSlidersTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('path');
-            $table->string('content');
+            $table->string('mobile');
             $table->integer('channel_id')->unsigned();
             $table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');
             $table->timestamps();

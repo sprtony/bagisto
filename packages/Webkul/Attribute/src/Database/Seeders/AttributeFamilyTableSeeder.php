@@ -16,8 +16,8 @@ class AttributeFamilyTableSeeder extends Seeder
         DB::table('attribute_families')->insert([
             [
                 'id'              => '1',
-                'code'            => 'default',
-                'name'            => 'Default',
+                'code'            => 'calzado',
+                'name'            => 'Calzado',
                 'status'          => '0',
                 'is_user_defined' => '1',
             ]
@@ -26,3 +26,4 @@ class AttributeFamilyTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
+

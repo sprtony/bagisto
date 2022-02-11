@@ -29,7 +29,6 @@ class AddColumnsInChannelsTable extends Migration
     {
         Schema::table('channels', function (Blueprint $table) {
             $table->dropColumn('is_maintenance_on');
-            $table->dropColumn('maintenance_mode_text');
             $table->dropColumn('allowed_ips');
         });
     }

@@ -27,8 +27,8 @@ class CreateChannelsTable extends Migration
             $table->text('footer_content')->nullable();
             $table->integer('default_locale_id')->unsigned();
             $table->integer('base_currency_id')->unsigned();
-            $table->foreign('default_locale_id')->references('id')->on('locales')->onDelete('cascade');
-            $table->foreign('base_currency_id')->references('id')->on('currencies')->onDelete('cascade');
+            $table->foreign('default_locale_id')->references('id')->on('locales');
+            $table->foreign('base_currency_id')->references('id')->on('currencies');
             $table->timestamps();
         });
 
@@ -63,3 +63,4 @@ class CreateChannelsTable extends Migration
         Schema::dropIfExists('channels');
     }
 }
+
