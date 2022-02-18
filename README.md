@@ -3,8 +3,9 @@
 ### TODO:
 
 - [ ] adminLTE
-- [ ] corregir Sliders en seccion de diseño
+- [ ] corregir Sliders que aparesca en el menu en seccion de diseño
 - [ ] agregar opciones de imagen mobil en sliders y categorias
+- [ ] agregar url en sliders
 - [x] eliminar el trigger al crear categorias
 - [ ] reparar migracion de address
 - [ ] oxxo pay separar a otra table el id

@@ -10,19 +10,13 @@ return [
             'name' => 'Default'
         ],
 
-        'bliss' => [
+        'quimashop' => [
             'views_path' => 'resources/themes/quimashop/views',
             'assets_path' => 'public/themes/quimashop/assets',
             'name' => 'Quimashop',
             'parent' => 'default'
         ],
 
-        'velocity' => [
-            'views_path' => 'resources/themes/velocity/views',
-            'assets_path' => 'public/themes/velocity/assets',
-            'name' => 'Velocity',
-            'parent' => 'default'
-        ],
     ],
 
     'admin-default' => 'adminLTE',
