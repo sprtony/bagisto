@@ -13,7 +13,10 @@
 - [x] hacer pruebas de no instalar velocity
 - [ ] integrar grapes
 - [ ] crud on demand (voyager)
-- [ ] cerrar session en menu de usuario
+- [x] cerrar session en menu de usuario
 - [ ] cambiar todo el modulo de UI
 - [ ] Ajustar vistas del sistema en la Shop
 - [ ] separar el script para conecta del de paypal
+- [ ] agregar BCC
+- [ ] infinit scroll
+- [ ] acomodar componentes del template

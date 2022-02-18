@@ -1,10 +1,10 @@
 <?php
-    $term = request()->input('term');
-    $image_search = request()->input('image-search');
+$term = request()->input('term');
+$image_search = request()->input('image-search');
 
-    if (! is_null($term)) {
-        $serachQuery = 'term='.request()->input('term');
-    }
+if (!is_null($term)) {
+    $serachQuery = 'term=' . request()->input('term');
+}
 ?>
 
 <div class="header" id="header">
@@ -24,17 +24,12 @@
 
             <ul class="search-container">
                 <li class="search-group">
-                    <form role="search" action="{{ route('shop.search.index') }}" method="GET" style="display: inherit;">
+                    <form role="search" action="{{ route('shop.search.index') }}" method="GET"
+                        style="display: inherit;">
                         <label for="search-bar" style="position: absolute; z-index: -1;">Search</label>
-                        <input
-                            required
-                            name="term"
-                            type="search"
-                            value="{{ ! $image_search ? $term : '' }}"
-                            class="search-field"
-                            id="search-bar"
-                            placeholder="{{ __('shop::app.header.search-text') }}"
-                        >
+                        <input required name="term" type="search" value="{{ !$image_search ? $term : '' }}"
+                            class="search-field" id="search-bar"
+                            placeholder="{{ __('shop::app.header.search-text') }}">
 
                         <image-search-component></image-search-component>
 
@@ -58,27 +53,21 @@
                 {!! view_render_event('bagisto.shop.layout.header.comppare-item.before') !!}
 
                 @php
-                    $showCompare = core()->getConfigData('general.content.shop.compare_option') == "1" ? true : false
+                    $showCompare = core()->getConfigData('general.content.shop.compare_option') == '1' ? true : false;
                 @endphp
 
                 @if ($showCompare)
                     <li class="compare-dropdown-container">
-                        <a
-                            @auth('customer')
-                                href="{{ route('velocity.customer.product.compare') }}"
-                            @endauth
-
-                            @guest('customer')
-                                href="{{ route('velocity.product.compare') }}"
-                            @endguest
-                            style="color: #242424;"
-                            >
+                        <a @auth('customer') href="{{ route('velocity.customer.product.compare') }}" @endauth
+                            @guest('customer') href="{{ route('velocity.product.compare') }}" @endguest
+                            style="color: #242424;">
 
                             <i class="icon compare-icon"></i>
                             <span class="name">
                                 {{ __('shop::app.customer.compare.text') }}
-                                <span class="count">(<span id="compare-items-count"></span>)<span class="count">
-                            </span>
+                                <span class="count">(<span id="compare-items-count"></span>)<span
+                                        class="count">
+                                    </span>
                         </a>
                     </li>
                 @endif
@@ -99,7 +88,8 @@
                             @foreach (core()->getCurrentChannel()->currencies as $currency)
                                 <li>
                                     @if (isset($serachQuery))
-                                        <a href="?{{ $serachQuery }}&currency={{ $currency->code }}">{{ $currency->code }}</a>
+                                        <a
+                                            href="?{{ $serachQuery }}&currency={{ $currency->code }}">{{ $currency->code }}</a>
                                     @else
                                         <a href="?currency={{ $currency->code }}">{{ $currency->code }}</a>
                                     @endif
@@ -127,7 +117,8 @@
                         <ul class="dropdown-list account guest">
                             <li>
                                 <div>
-                                    <label style="color: #9e9e9e; font-weight: 700; text-transform: uppercase; font-size: 15px;">
+                                    <label
+                                        style="color: #9e9e9e; font-weight: 700; text-transform: uppercase; font-size: 15px;">
                                         {{ __('shop::app.header.title') }}
                                     </label>
                                 </div>
@@ -137,11 +128,13 @@
                                 </div>
 
                                 <div style="margin-top: 15px;">
-                                    <a class="btn btn-primary btn-md" href="{{ route('customer.session.index') }}" style="color: #ffffff">
+                                    <a class="btn btn-primary btn-md" href="{{ route('customer.session.index') }}"
+                                        style="color: #ffffff">
                                         {{ __('shop::app.header.sign-in') }}
                                     </a>
 
-                                    <a class="btn btn-primary btn-md" href="{{ route('customer.register.index') }}" style="float: right; color: #ffffff">
+                                    <a class="btn btn-primary btn-md" href="{{ route('customer.register.index') }}"
+                                        style="float: right; color: #ffffff">
                                         {{ __('shop::app.header.sign-up') }}
                                     </a>
                                 </div>
@@ -151,34 +144,39 @@
 
                     @auth('customer')
                         @php
-                           $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == "1" ? true : false;
+                            $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == '1' ? true : false;
                         @endphp
 
                         <ul class="dropdown-list account customer">
                             <li>
                                 <div>
-                                    <label style="color: #9e9e9e; font-weight: 700; text-transform: uppercase; font-size: 15px;">
+                                    <label
+                                        style="color: #9e9e9e; font-weight: 700; text-transform: uppercase; font-size: 15px;">
                                         {{ auth()->guard('customer')->user()->first_name }}
                                     </label>
                                 </div>
 
                                 <ul>
                                     <li>
-                                        <a href="{{ route('customer.profile.index') }}">{{ __('shop::app.header.profile') }}</a>
+                                        <a
+                                            href="{{ route('customer.profile.index') }}">{{ __('shop::app.header.profile') }}</a>
                                     </li>
 
                                     @if ($showWishlist)
                                         <li>
-                                            <a href="{{ route('customer.wishlist.index') }}">{{ __('shop::app.header.wishlist') }}</a>
+                                            <a
+                                                href="{{ route('customer.wishlist.index') }}">{{ __('shop::app.header.wishlist') }}</a>
                                         </li>
                                     @endif
 
                                     <li>
-                                        <a href="{{ route('shop.checkout.cart.index') }}">{{ __('shop::app.header.cart') }}</a>
+                                        <a
+                                            href="{{ route('shop.checkout.cart.index') }}">{{ __('shop::app.header.cart') }}</a>
                                     </li>
 
                                     <li>
-                                        <a href="{{ route('customer.session.destroy') }}">{{ __('shop::app.header.logout') }}</a>
+                                        <a
+                                            href="{{ route('customer.session.destroy') }}">{{ __('shop::app.header.logout') }}</a>
                                     </li>
                                 </ul>
                             </li>
@@ -201,7 +199,7 @@
 
             </ul>
 
-            <span class="menu-box" ><span class="icon icon-menu" id="hammenu"></span>
+            <span class="menu-box"><span class="icon icon-menu" id="hammenu"></span>
         </div>
     </div>
 
@@ -231,18 +229,17 @@
 
     <script type="text/x-template" id="image-search-component-template">
         <div v-if="image_search_status">
-            <label class="image-search-container" :for="'image-search-container-' + _uid">
-                <i class="icon camera-icon"></i>
+                <label class="image-search-container" :for="'image-search-container-' + _uid">
+                    <i class="icon camera-icon"></i>
 
-                <input type="file" :id="'image-search-container-' + _uid" ref="image_search_input" v-on:change="uploadImage()"/>
+                    <input type="file" :id="'image-search-container-' + _uid" ref="image_search_input" v-on:change="uploadImage()"/>
 
-                <img :id="'uploaded-image-url-' +  + _uid" :src="uploaded_image_url" alt="" width="20" height="20" />
-            </label>
-        </div>
-    </script>
+                    <img :id="'uploaded-image-url-' +  + _uid" :src="uploaded_image_url" alt="" width="20" height="20" />
+                </label>
+            </div>
+        </script>
 
     <script>
-
         Vue.component('image-search-component', {
 
             template: '#image-search-component-template',
@@ -250,7 +247,8 @@
             data: function() {
                 return {
                     uploaded_image_url: '',
-                    image_search_status: "{{core()->getConfigData('general.content.shop.image_search') == '1' ? 'true' : 'false'}}" == 'true'
+                    image_search_status: "{{ core()->getConfigData('general.content.shop.image_search') == '1' ? 'true' : 'false' }}" ==
+                        'true'
                 }
             },
 
@@ -269,7 +267,11 @@
 
                                 formData.append('image', imageInput.files[0]);
 
-                                axios.post("{{ route('shop.image.search.upload') }}", formData, {headers: {'Content-Type': 'multipart/form-data'}})
+                                axios.post("{{ route('shop.image.search.upload') }}", formData, {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        }
+                                    })
                                     .then(function(response) {
                                         self.uploaded_image_url = response.data;
 
@@ -282,7 +284,8 @@
 
                                             net = await mobilenet.load();
 
-                                            const imgElement = document.getElementById('uploaded-image-url-' +  + self._uid);
+                                            const imgElement = document.getElementById(
+                                                'uploaded-image-url-' + +self._uid);
 
                                             try {
                                                 const result = await net.classify(imgElement);
@@ -291,7 +294,8 @@
                                                     queryString = value.className.split(',');
 
                                                     if (queryString.length > 1) {
-                                                        analysedResult = analysedResult.concat(queryString)
+                                                        analysedResult = analysedResult.concat(
+                                                            queryString)
                                                     } else {
                                                         analysedResult.push(queryString[0])
                                                     }
@@ -299,23 +303,24 @@
                                             } catch (error) {
                                                 self.$root.hideLoader();
 
-                                                window.flashMessages = [
-                                                    {
-                                                        'type': 'alert-error',
-                                                        'message': "{{ __('shop::app.common.error') }}"
-                                                    }
-                                                ];
+                                                window.flashMessages = [{
+                                                    'type': 'alert-error',
+                                                    'message': "{{ __('shop::app.common.error') }}"
+                                                }];
 
                                                 self.$root.addFlashMessages();
                                             };
 
                                             localStorage.searched_image_url = self.uploaded_image_url;
 
-                                            queryString = localStorage.searched_terms = analysedResult.join('_');
+                                            queryString = localStorage.searched_terms = analysedResult
+                                                .join('_');
 
                                             self.$root.hideLoader();
 
-                                            window.location.href = "{{ route('shop.search.index') }}" + '?term=' + queryString + '&image-search=1';
+                                            window.location.href =
+                                                "{{ route('shop.search.index') }}" + '?term=' +
+                                                queryString + '&image-search=1';
                                         }
 
                                         app();
@@ -323,12 +328,10 @@
                                     .catch(function(error) {
                                         self.$root.hideLoader();
 
-                                        window.flashMessages = [
-                                            {
-                                                'type': 'alert-error',
-                                                'message': "{{ __('shop::app.common.error') }}"
-                                            }
-                                        ];
+                                        window.flashMessages = [{
+                                            'type': 'alert-error',
+                                            'message': "{{ __('shop::app.common.error') }}"
+                                        }];
 
                                         self.$root.addFlashMessages();
                                     });
@@ -336,12 +339,10 @@
 
                                 imageInput.value = '';
 
-                                        window.flashMessages = [
-                                            {
-                                                'type': 'alert-error',
-                                                'message': "{{ __('shop::app.common.image-upload-limit') }}"
-                                            }
-                                        ];
+                                window.flashMessages = [{
+                                    'type': 'alert-error',
+                                    'message': "{{ __('shop::app.common.image-upload-limit') }}"
+                                }];
 
                                 self.$root.addFlashMessages();
 
@@ -355,7 +356,6 @@
                 }
             }
         });
-
     </script>
 
     <script>
@@ -367,12 +367,13 @@
 
             @auth('customer')
                 @php
-                    $compareCount = app('Webkul\Velocity\Repositories\VelocityCustomerCompareProductRepository')
-                        ->count([
-                            'customer_id' => auth()->guard('customer')->user()->id,
-                        ]);
+                $compareCount = app('Webkul\Velocity\Repositories\VelocityCustomerCompareProductRepository')->count([
+                    'customer_id' => auth()
+                        ->guard('customer')
+                        ->user()->id,
+                ]);
                 @endphp
-
+            
                 let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
                 $('#compare-items-count').html({{ $compareCount }});
             @endauth
