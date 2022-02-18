@@ -37,6 +37,5 @@ return [
         \Webkul\Theme\Providers\ModuleServiceProvider::class,
         \Webkul\Ui\Providers\ModuleServiceProvider::class,
         \Webkul\User\Providers\ModuleServiceProvider::class,
-        \Webkul\Velocity\Providers\ModuleServiceProvider::class,
     ]
 ];

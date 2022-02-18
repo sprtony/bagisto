@@ -109,8 +109,7 @@ class Core
         LocaleRepository $localeRepository,
         CustomerGroupRepository $customerGroupRepository,
         CoreConfigRepository $coreConfigRepository
-    )
-    {
+    ) {
         $this->channelRepository = $channelRepository;
 
         $this->currencyRepository = $currencyRepository;
@@ -161,7 +160,8 @@ class Core
             'https://' . request()->getHttpHost(),
         ])->first();
 
-        if (! self::$channel) {
+
+        if (!self::$channel) {
             self::$channel = $this->channelRepository->first();
         }
 
@@ -275,7 +275,7 @@ class Core
 
         $locale = $this->localeRepository->findOneByField('code', app()->getLocale());
 
-        if (! $locale) {
+        if (!$locale) {
             $locale = $this->localeRepository->findOneByField('code', config('app.fallback_locale'));
         }
 
@@ -329,7 +329,7 @@ class Core
 
         $baseCurrency = $this->currencyRepository->findOneByField('code', config('app.currency'));
 
-        if (! $baseCurrency) {
+        if (!$baseCurrency) {
             $baseCurrency = $this->currencyRepository->first();
         }
 
@@ -455,12 +455,12 @@ class Core
      */
     public function convertPrice($amount, $targetCurrencyCode = null, $orderCurrencyCode = null)
     {
-        if (! isset($this->lastCurrencyCode)) {
+        if (!isset($this->lastCurrencyCode)) {
             $this->lastCurrencyCode = $this->getBaseCurrency()->code;
         }
 
         if ($orderCurrencyCode) {
-            if (! isset($this->lastOrderCode)) {
+            if (!isset($this->lastOrderCode)) {
                 $this->lastOrderCode = $orderCurrencyCode;
             }
 
@@ -473,17 +473,17 @@ class Core
             }
         }
 
-        $targetCurrency = ! $targetCurrencyCode
+        $targetCurrency = !$targetCurrencyCode
             ? $this->getCurrentCurrency()
             : $this->currencyRepository->findOneByField('code', $targetCurrencyCode);
 
-        if (! $targetCurrency) {
+        if (!$targetCurrency) {
             return $amount;
         }
 
         $exchangeRate = $this->getExchangeRate($targetCurrency->id);
 
-        if ('' === $exchangeRate || null === $exchangeRate || ! $exchangeRate->rate) {
+        if ('' === $exchangeRate || null === $exchangeRate || !$exchangeRate->rate) {
             return $amount;
         }
 
@@ -506,11 +506,11 @@ class Core
      */
     public function convertToBasePrice($amount, $targetCurrencyCode = null)
     {
-        $targetCurrency = ! $targetCurrencyCode
+        $targetCurrency = !$targetCurrencyCode
             ? $this->getCurrentCurrency()
             : $this->currencyRepository->findOneByField('code', $targetCurrencyCode);
 
-        if (! $targetCurrency) {
+        if (!$targetCurrency) {
             return $amount;
         }
 
@@ -518,7 +518,7 @@ class Core
             'target_currency' => $targetCurrency->id,
         ]);
 
-        if (null === $exchangeRate || ! $exchangeRate->rate) {
+        if (null === $exchangeRate || !$exchangeRate->rate) {
             return $amount;
         }
 
@@ -623,7 +623,7 @@ class Core
             $content = $formater->formatCurrency($price, $this->getBaseCurrencyCode());
         }
 
-        return ! $isEncoded ? $content : htmlentities($content);
+        return !$isEncoded ? $content : htmlentities($content);
     }
 
     /**
@@ -649,9 +649,9 @@ class Core
             $toTimeStamp += 86400;
         }
 
-        if (! $this->is_empty_date($dateFrom) && $channelTimeStamp < $fromTimeStamp) {
+        if (!$this->is_empty_date($dateFrom) && $channelTimeStamp < $fromTimeStamp) {
             $result = false;
-        } elseif (! $this->is_empty_date($dateTo) && $channelTimeStamp > $toTimeStamp) {
+        } elseif (!$this->is_empty_date($dateTo) && $channelTimeStamp > $toTimeStamp) {
             $result = false;
         } else {
             $result = true;
@@ -728,7 +728,7 @@ class Core
     {
         static $loadedConfigs = [];
 
-        if (array_key_exists($field, $loadedConfigs) && ! in_array($field, $this->coreConfigExceptions)) {
+        if (array_key_exists($field, $loadedConfigs) && !in_array($field, $this->coreConfigExceptions)) {
             $coreConfigValue = $loadedConfigs[$field];
         } else {
             if (null === $channel) {
@@ -742,7 +742,7 @@ class Core
             $loadedConfigs[$field] = $coreConfigValue = $this->getCoreConfigValue($field, $channel, $locale);
         }
 
-        if (! $coreConfigValue) {
+        if (!$coreConfigValue) {
             $fields = explode(".", $field);
 
             array_shift($fields);
@@ -907,7 +907,7 @@ class Core
     {
         $ts = strtotime($date);
 
-        if (! $day) {
+        if (!$day) {
             $start = (date('D', $ts) == 'Sun') ? $ts : strtotime('last sunday', $ts);
 
             return date('Y-m-d', $start);
@@ -990,7 +990,6 @@ class Core
                             $items[$level1['key']]['children'][$finalKey2]['children'][$finalKey3] = $level3;
                         }
                     }
-
                 }
             }
         }
@@ -1017,7 +1016,7 @@ class Core
         while (count($keys) > 1) {
             $key = array_shift($keys);
 
-            if (! isset($array[$key]) || ! is_array($array[$key])) {
+            if (!isset($array[$key]) || !is_array($array[$key])) {
                 $array[$key] = [];
             }
 
@@ -1172,3 +1171,4 @@ class Core
         return $coreConfigValue;
     }
 }
+

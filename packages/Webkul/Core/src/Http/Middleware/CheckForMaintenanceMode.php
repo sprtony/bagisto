@@ -23,7 +23,7 @@ class CheckForMaintenanceMode extends Original
      * @var \Webkul\Core\Models\Channel
      */
     protected $channel;
-    
+
     /**
      * Exclude route names.
      */
@@ -106,8 +106,7 @@ class CheckForMaintenanceMode extends Original
                 }
             }
 
-            if ($this->shouldPassThrough($request)) 
-            {
+            if ($this->shouldPassThrough($request)) {
                 return $response;
             }
 
@@ -117,3 +116,4 @@ class CheckForMaintenanceMode extends Original
         return $next($request);
     }
 }
+
