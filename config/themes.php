@@ -29,7 +29,7 @@ return [
         ],
 
         'adminLTE' => [
-            'views_path' => 'resources/admin-themes/adminLTE/views',
+            'views_path' => 'packages/Sprtony/AdminLTE/src/Resources/views',
             'assets_path' => 'public/admin-themes/adminLTE/assets',
             'name' => 'adminLTE',
             'parent' => 'default'

@@ -2,21 +2,22 @@
 
 namespace Webkul\CMS\Http\Controllers\Admin;
 
+use Webkul\Admin\DataGrids\CMSPageDataGrid;
 use Webkul\CMS\Http\Controllers\Controller;
 use Webkul\CMS\Repositories\CmsRepository;
 
- class PageController extends Controller
+class PageController extends Controller
 {
     /**
-     * To hold the request variables from route file
-     * 
+     * To hold the request variables from route file.
+     *
      * @var array
      */
     protected $_config;
 
     /**
-     * To hold the CMSRepository instance
-     * 
+     * To hold the CMS repository instance.
+     *
      * @var \Webkul\CMS\Repositories\CmsRepository
      */
     protected $cmsRepository;
@@ -37,17 +38,21 @@ use Webkul\CMS\Repositories\CmsRepository;
     }
 
     /**
-     * Loads the index page showing the static pages resources
-     * 
+     * Loads the index page showing the static pages resources.
+     *
      * @return \Illuminate\View\View
      */
     public function index()
     {
+        if (request()->ajax()) {
+            return app(CMSPageDataGrid::class)->toJson();
+        }
+
         return view($this->_config['view']);
     }
 
     /**
-     * To create a new CMS page
+     * To create a new CMS page.
      *
      * @return \Illuminate\View\View
      */
@@ -57,7 +62,7 @@ use Webkul\CMS\Repositories\CmsRepository;
     }
 
     /**
-     * To store a new CMS page in storage
+     * To store a new CMS page in storage.
      *
      * @return \Illuminate\Http\Response
      */
@@ -71,7 +76,7 @@ use Webkul\CMS\Repositories\CmsRepository;
             'channels'     => 'required',
             'html_content' => 'required',
         ]);
-        
+
         $page = $this->cmsRepository->create(request()->all());
 
         session()->flash('success', trans('admin::app.response.create-success', ['name' => 'page']));
@@ -80,7 +85,7 @@ use Webkul\CMS\Repositories\CmsRepository;
     }
 
     /**
-     * To edit a previously created CMS page
+     * To edit a previously created CMS page.
      *
      * @param  int  $id
      * @return \Illuminate\View\View
@@ -93,14 +98,14 @@ use Webkul\CMS\Repositories\CmsRepository;
     }
 
     /**
-     * To update the previously created CMS page in storage
+     * To update the previously created CMS page in storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update($id)
     {
-        $locale = request()->get('locale') ?: app()->getLocale();
+        $locale = core()->getRequestedLocaleCode();
 
         $this->validate(request(), [
             $locale . '.url_key'      => ['required', new \Webkul\Core\Contracts\Validations\Slug, function ($attribute, $value, $fail) use ($id) {
@@ -121,7 +126,7 @@ use Webkul\CMS\Repositories\CmsRepository;
     }
 
     /**
-     * To delete the previously create CMS page
+     * To delete the previously create CMS page.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -131,18 +136,14 @@ use Webkul\CMS\Repositories\CmsRepository;
         $page = $this->cmsRepository->findOrFail($id);
 
         if ($page->delete()) {
-            session()->flash('success', trans('admin::app.cms.pages.delete-success'));
-
-            return response()->json(['message' => true], 200);
-        } else {
-            session()->flash('success', trans('admin::app.cms.pages.delete-failure'));
-
-            return response()->json(['message' => false], 200);
+            return response()->json(['message' => trans('admin::app.cms.pages.delete-success')]);
         }
+
+        return response()->json(['message' => trans('admin::app.cms.pages.delete-failure')], 500);
     }
 
     /**
-     * To mass delete the CMS resource from storage
+     * To mass delete the CMS resource from storage.
      *
      * @return \Illuminate\Http\Response
      */
